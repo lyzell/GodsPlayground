@@ -17,35 +17,30 @@ public class GodsPlaygroundServer {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Hello world!!");
-        /*
-        get("/hello", new Route() {
 
-            @Override
-            public Object handle(Request request, Response response) throws Exception {
-                return "Hello World";
-            }
-        });
-        */
         get("/longpoll", (req, res) -> {
             System.out.println("==> long poll start. " + req.cookie(COOKIE_IDENTIFIER));
-            Thread.sleep(2000);
+            Thread.sleep(500);
+            //Active waiting, change to use lockers
+            while(true) {
+            	if (x==12) break;
+            	Thread.sleep(100);
+            }
+            
             System.out.println("==> long poll end. " + req.cookie(COOKIE_IDENTIFIER));
             x++;
             return "" + x;
         });
 
-        get("/hello", (req, res) -> {
-            System.out.println("==> Hello world. " + req.cookie(COOKIE_IDENTIFIER));
-            return "Hello World";
-        });
 
         get("/hello2", (req, res) -> {
-            System.out.println("==> Hello world2. " + req.cookie(COOKIE_IDENTIFIER));
+        	x++;
+            System.out.println("==> Hello world2. " + req.cookie(COOKIE_IDENTIFIER)+" x:"+x);
             return "Hello World2";
         });
 
         get("/index.html", (req, res) -> {
-            final byte[] bytes = FileUtils.readFileToByteArray(new File("/Users/piotrmilos/git/GodsPlayground/GodsPlayground/src/htmlCode/index.html"));
+            final byte[] bytes = FileUtils.readFileToByteArray(new File("/Users/piotrmilos/git/GodsPlayground/GodsPlayground/src/htmlCode/index2.html"));
 
             res.cookie(COOKIE_IDENTIFIER, "" + randomGenerator.nextInt(100));
             return bytes;
