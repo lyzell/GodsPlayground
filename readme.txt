@@ -1,1 +1,1 @@
-TEST
+This is a project aiming at implenting GodsPlayground.
