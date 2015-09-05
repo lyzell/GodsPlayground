@@ -21,7 +21,8 @@ abstract public class GamePhase {
 	 * Dana faza może powtarzać się wiele razy. Na przykład każda z czterch tur będzie zaimpmentowana przez sekwencję faz, w której wystąpi RevenueRound
 	 * 
 	 */
-	private static Class[] roundsFlow = new Class[] {InitialRound.class, RevenuePhase.class, SupportPhase.class};
+	private static Class[] roundsFlow 
+		= new Class[] {InitialPhase.class, RevenuePhase.class, SupportPhase.class};
 	
 	/**
 	 * numer aktualnej fazy w roundsFlow. Potrzebne do odnaleziania następnej.
@@ -128,4 +129,8 @@ abstract public class GamePhase {
 	 * @param answ
 	 */
 	abstract public void processCommand(String answ);
+
+	public Object getId() {
+		return this.getClass().getName();
+	}
 }

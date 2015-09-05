@@ -28,10 +28,14 @@ public class GameModel {
 	 */
 	private int numberOfPlayers;
 	
+	public Object getCurrentPhaseId() {
+		return gamePhase.getId();
+	}
+	
 	/**
 	 * Do pamietania wiadomości przekazywanych przez obiekty fazy
 	 */
-	private String message;
+//	private String message;
 	
 	/**
 	 * Konstruktor
@@ -48,39 +52,39 @@ public class GameModel {
 	 * Opis komend (nie będzie tego w html, ale będzie coś podobnego)
 	 * @return opis
 	 */
-	public String currentCommands() {
-		if (gamePhase.isPhaseFinished()) {
-			return "Następna runda (NR), Zakończ grę (ZA)";
-		} else {
-			return "Zakończ grę (ZA)";
-		}
-	}
+//	public String currentCommands() {
+//		if (gamePhase.isPhaseFinished()) {
+//			return "Następna runda (NR), Zakończ grę (ZA)";
+//		} else {
+//			return "Zakończ grę (ZA)";
+//		}
+//	}
 
 	/**
 	 * Opis stanu świata
 	 * @return opis
 	 */
-	public String showGameState() {
-		String res = "";
-		for (Province p: Province.values()){
-			res += p+"\n";
-		}
-		res += "================\n";
-		for (House p: House.values()) {
-			res+= p+"\n";
-		}
-		res+= "Rzeczpospolita w ogniu!";
-		return res;
-		
-	}
+//	public String showGameState() {
+//		String res = "";
+//		for (Province p: Province.values()){
+//			res += p+"\n";
+//		}
+//		res += "================\n";
+//		for (House p: House.values()) {
+//			res+= p+"\n";
+//		}
+//		res+= "Rzeczpospolita w ogniu!";
+//		return res;
+//		
+//	}
 
 	/**
 	 * Zwraca opis akcji danej fazy. Być może należy to dołączyć do current command, ale to decyzja po przeniesienu do html
 	 * @return opis
 	 */
-	public String showCurrentAction() {
-		return gamePhase.decribe();
-	}
+//	public String showCurrentAction() {
+//		return gamePhase.decribe();
+//	}
 
 	/**
 	 * Przetwarza komendę. Bardzo ważna metoda. Obsługuje komendy growe bezpośrednio a fazowe przekazuje do obiektu fazy
@@ -88,23 +92,23 @@ public class GameModel {
 	 * 
 	 * @param answ komenda podana przez gracza
 	 */
-	public void processCommand(String answ) {
-		if (answ.equalsIgnoreCase("ZA")) {
-			endOfTheGame = true;
-			message = "Koniec gry";
-		} else if (answ.equalsIgnoreCase("NR")) {
-			if (gamePhase.isPhaseFinished()) {
-				gamePhase = gamePhase.getNextPhase();
-				message = "Natępna runda";
-			} else {
-				message = "Następna runda nie jest dostępna";
-			}
-		} else {
-			gamePhase.processCommand(answ);
-			message = gamePhase.lastCommandCode();
-		}
-		
-	}
+//	public void processCommand(String answ) {
+//		if (answ.equalsIgnoreCase("ZA")) {
+//			endOfTheGame = true;
+//			message = "Koniec gry";
+//		} else if (answ.equalsIgnoreCase("NR")) {
+//			if (gamePhase.isPhaseFinished()) {
+//				gamePhase = gamePhase.getNextPhase();
+//				message = "Natępna runda";
+//			} else {
+//				message = "Następna runda nie jest dostępna";
+//			}
+//		} else {
+//			gamePhase.processCommand(answ);
+//			message = gamePhase.lastCommandCode();
+//		}
+//		
+//	}
 
 	/**
 	 * Koniec gry? 
@@ -118,8 +122,8 @@ public class GameModel {
 	 * Opis wyniku osatnio wykonanej komendy 
 	 * @return opis
 	 */
-	public String lastCommandCode() {
-		return message;
-		
-	}
+//	public String lastCommandCode() {
+//		return message;
+//		
+//	}
 }

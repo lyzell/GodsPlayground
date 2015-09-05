@@ -6,13 +6,13 @@
  */
 package com.godsplayground;
 
-public class InitialRound extends GamePhase {
+public class InitialPhase extends GamePhase {
 
 	/**
 	 * Konstruktor (uwaga, trzeba wołać super(gateState)!) 
 	 * @param gameState
 	 */
-	public InitialRound(GameState gameState) {
+	public InitialPhase(GameState gameState) {
 		super(gameState);
 		//Zaczynamy z losowym rodem
 		player = House.getRandomHouse(numberOfPlayers);
