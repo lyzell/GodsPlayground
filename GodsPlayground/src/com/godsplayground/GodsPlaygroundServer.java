@@ -45,7 +45,7 @@ public class GodsPlaygroundServer {
         });
 
         get("/index.html", (req, res) -> {
-            final byte[] bytes = FileUtils.readFileToByteArray(new File("/Users/gmilos/Dropbox/Unison/Documents/Projects/GodsPlayground/index.html"));
+            final byte[] bytes = FileUtils.readFileToByteArray(new File("/Users/piotrmilos/git/GodsPlayground/GodsPlayground/src/htmlCode/index.html"));
 
             res.cookie(COOKIE_IDENTIFIER, "" + randomGenerator.nextInt(100));
             return bytes;
