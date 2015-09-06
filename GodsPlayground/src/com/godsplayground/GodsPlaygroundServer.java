@@ -1,8 +1,5 @@
 package com.godsplayground;
 
-import org.apache.commons.io.FileUtils;
-
-import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -33,23 +30,23 @@ public class GodsPlaygroundServer {
     	players = new HashMap<String, House>();
 
         get("/longpoll", (req, res) -> {
-            House player = players.get(req.cookie(COOKIE_IDENTIFIER));
+            House house = players.get(req.cookie(COOKIE_IDENTIFIER));
             
             //Active waiting needs to be changed
             while(true) {
             	Thread.sleep(100);
-            	if (view.toBeRefreshed(player)) break;
+            	if (view.toBeRefreshed(house)) break;
             }
             
-            //System.out.println("==> long poll end. " + req.cookie(COOKIE_IDENTIFIER));
-            return "";
+            
+             return view.getFullView(house);
         });
 
-
-        get("/hello2", (req, res) -> {
-            System.out.println("==> Hello world2. " + req.cookie(COOKIE_IDENTIFIER)+" x:");
-            return "Hello World2";
-        });
+//
+//        get("/hello2", (req, res) -> {
+//            System.out.println("==> Hello world2. " + req.cookie(COOKIE_IDENTIFIER)+" x:");
+//            return "Hello World2";
+//        });
 
         get("/index.html", (req, res) -> {
         	//This whole method should be rewritten. The initial handshake should be 
@@ -70,7 +67,7 @@ public class GodsPlaygroundServer {
         		String playerId = ""+randomGenerator.nextInt(100);
         		res.cookie(COOKIE_IDENTIFIER, playerId);
         		players.put(playerId, house);
-        		System.out.println("The house of "+house+" has joined the game.");
+        		System.out.println("The house of "+house.name()+" has joined the game.");
         		currentNoOfPlayers++;
         		if (currentNoOfPlayers == NUMBEROFPLAYERS) {
         			isGameStarted = true;

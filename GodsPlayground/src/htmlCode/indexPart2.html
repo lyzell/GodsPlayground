@@ -1,20 +1,9 @@
-
-	
-  	var xmlhttp2=new XMLHttpRequest();
-	xmlhttp2.onreadystatechange=function()
-  	{
-  		if (xmlhttp2.readyState==4 && xmlhttp2.status==200)
-    	{
-    		document.getElementById("p1").innerHTML=xmlhttp2.responseText;
-    	}
-  	}
-	xmlhttp2.open("GET","hello2", true);
-	xmlhttp2.send();
 	longpoll();
 }
 </script>
 <body onload="script();">
-	<p id="header" id="Header"></p>
+	<p id="header"></p>
+	
 	<table style="width:100%" border="1" cellspacing="5" cellpadding="5">
 		<tr>
 			<td "width:80%"> TU BĘDZIE MAPA </td>

@@ -8,8 +8,16 @@ public class InitialPhaseView extends HTMLViewRenderer {
 	}
 
 	public String renderFullWebpage(House house) {
-		// TODO Auto-generated method stub
-		return null;
+		String ret = indexPart1 + "document.getElementById(\"header\").innerHTML=\"Witamy Mości: "+house.name()+"\"\n"+indexPart2;
+		return ret;
+	}
+
+	
+	public boolean toBeRefreshed(House house) {
+		if (isTheFirstTime(house)) {
+			return true;
+		}
+		return false;
 	}
 
 }

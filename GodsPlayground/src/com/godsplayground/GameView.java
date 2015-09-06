@@ -17,7 +17,7 @@ public class GameView {
 		this.model = model;
 		this.phaseToView = new HashMap<Object, HTMLViewRenderer>();
 		
-		phaseToView.put("InitialPhase", new InitialPhaseView(model));
+		phaseToView.put("com.godsplayground.InitialPhase", new InitialPhaseView(model));
 		
 	}
 	
@@ -26,8 +26,9 @@ public class GameView {
 		return currentPhaseRenderer.renderFullWebpage(house);
 	}
 
-	public boolean toBeRefreshed(House player) {
-		return false;
+	public boolean toBeRefreshed(House house) {
+		HTMLViewRenderer currentPhaseRenderer = phaseToView.get(model.getCurrentPhaseId());
+		return currentPhaseRenderer.toBeRefreshed(house);
 	}
 
 }
